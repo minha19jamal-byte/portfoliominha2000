@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Jamal - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #e0f7fa 0%, #fce4ec 100%);
+        }
+        #particles-js {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, #00acc1, #d81b60);
+            color: white;
+            position: relative;
+        }
+        .hero h1 {
+            font-size: 5.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-shadow: 3px 3px 15px rgba(0,0,0,0.4);
+            margin-bottom: 1rem;
+        }
+        .typing {
+            font-size: 2.2rem;
+            min-height: 70px;
+            font-weight: 500;
+        }
+        .btn-glow {
+            display: inline-block;
+            padding: 16px 40px;
+            margin: 15px;
+            background: white;
+            color: #00acc1;
+            font-weight: 600;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 0 25px rgba(255,255,255,0.6);
+            transition: all 0.4s ease;
+            border: 3px solid white;
+        }
+        .btn-glow:hover {
+            transform: scale(1.12);
+            box-shadow: 0 0 40px rgba(255,255,255,0.9);
+        }
+        .btn-primary {
+            background: linear-gradient(90deg, #00acc1, #d81b60);
+            color: white;
+        }
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1.5rem 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3.5rem; }
+            .typing { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="container mx-auto px-8 flex justify-between items-center">
+            <div class="text-3xl font-bold text-cyan-700">Minha Jamal</div>
+            <div class="space-x-8 text-lg font-medium">
+                <a href="#" class="text-gray-700 hover:text-cyan-600 transition">Home</a>
+                <a href="#about" class="text-gray-700 hover:text-cyan-600 transition">About</a>
+                <a href="#projects" class="text-gray-700 hover:text-cyan-600 transition">Projects</a>
+                <a href="#contact" class="text-gray-700 hover:text-cyan-600 transition">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section (Home Page) -->
+    <section class="hero">
+        <div class="container mx-auto px-8">
+            <h1 class="animate__animated animate__fadeInDown">Minha Jamal</h1>
+            <p class="typing text-pink-100" id="typing-text"></p>
+            
+            <div class="mt-12">
+                <a href="#contact" class="btn-glow btn-primary">Hire Me</a>
+                <a href="Minha Jamal CV.pdf" download class="btn-glow">
+                    <i class="fas fa-download mr-2"></i> Download CV
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Particles
+        particlesJS({
+            particles: {
+                number: { value: 60, density: { enable: true, value_area: 800 } },
+                color: { value: "#ffffff" },
+                shape: { type: "circle" },
+                opacity: { value: 0.4, random: true },
+                size: { value: 4, random: true },
+                move: { enable: true, speed: 1.5, direction: "none", random: false, out_mode: "out" }
+            },
+            interactivity: { detect_on: "canvas", events: { onhover: { enable: true, mode: "repulse" } } },
+            retina_detect: true
+        });
+
+        // Typing Effect
+        const texts = ["Computer Science Student", "C/C++/Java Developer", "Problem Solver", "Future Software Engineer"];
+        let count = 0, index = 0, currentText = '', letter = '';
+
+        (function type(){
+            if (count === texts.length) count = 0;
+            currentText = texts[count];
+            letter = currentText.slice(0, ++index);
+
+            document.getElementById('typing-text').textContent = letter;
+            
+            if (letter.length === currentText.length) {
+                count++;
+                index = 0;
+                setTimeout(type, 2000);
+            } else {
+                setTimeout(type, 100);
+            }
+        }());
+    </script>
+</body>
+</html>
